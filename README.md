@@ -3,3 +3,8 @@ Kod zawiera wiele błędów i nie będzie więcej aktualizowany. Został wrzucon
 
 # ℹ️ | Informacja
 Krytyki nie będziemy brali pod uwagę. Znamy swoje wcześniejsze błędy w 99% i rozumiemy, co zrobiliśmy źle. Nie trzeba nam wypominać starych błędów/usterek/niedogodnień w kodzie.
+
+# 🧔| Programiści
+
+- Minecrafter 
+- Korrumz2
