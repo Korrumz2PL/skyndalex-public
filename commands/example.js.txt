@@ -1,0 +1,18 @@
+const Discord = require("Discord.js ")
+exports.run = async (client, message, args, level) => {
+
+};
+
+exports.conf = {
+  enabled: true,
+  guildOnly: false,
+  aliases: [],
+  permLevel: "Użytkownik"
+};
+
+exports.help = {
+  name: "",
+  category: "",
+  description: "",
+  usage: ""
+};

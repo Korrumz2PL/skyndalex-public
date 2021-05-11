@@ -1,19 +1,4 @@
-const r = require("rethinkdb")
-module.exports = async(client, guild) => {
-
-   await r.table("settings").insert({
-        id: guild.id
-    }).run(client.con)
-
-   await r.table("moderation").insert({
-       id: guild.id
-   }).run(client.con)
-
-    await r.table("ServerEconomy").insert({
-        id: guild.id
-    }).run(client.con)
-
-    await r.table("system").insert({
-        id: guild.id
-    }).run(client.con)
-}
+module.exports = async (client, guild) => {
+    console.log(guild.name)
+    client.dbs.prepare('INSERT INTO ServerSettings (ID, welcomeEnabled, welcomeMessage, goodbyeEnabled, goodbyeMessage, prefix) VALUES (?,?,?,?,?,?)').run(`${guild.id}`, `false`, `Witaj {{user}}`, `false`, `Żegnaj {{user}}`, `?`)
+  }

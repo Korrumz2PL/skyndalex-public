@@ -1,25 +1,18 @@
-const r = require('rethinkdb')
-const Discord = require("discord.js")
+const Discord = require('discord.js-light')
 module.exports = async (client, member) => {
-    /*
-    const role = await r.table('settings').get(member.guild.id)("autoRole").run(client.con)
-    member.roles.add(role)
+  if(client.dbs.prepare(`SELECT welcomeEnabled FROM ServerSettings WHERE ID = ?`).get(member.guild.id).welcomeEnabled==="true") {
+  let tekst = client.dbs.prepare(`SELECT welcomeMessage FROM ServerSettings WHERE ID = ?`).get(member.guild.id).welcomeMessage
+  .replace('{{user}}', member.user.tag)
+  .replace('{{mention}}', member.user)
+  .replace('{{nickname}}', member.user.username)
+  .replace('{{id}}', member.user.id)
+  .replace('{{czlonkowie}}', member.guild.memberCount)
 
-     */
-
-    const channel = await r.table('settings').get(member.guild.id)("welcomeChannel").run(client.con)
-    const wAuthor = await r.table("settings").get(member.guild.id)("welcomeTextAuthor").run(client.con)
-    const wTitle = await r.table("settings").get(member.guild.id)("welcomeTextTitle").run(client.con)
-    const wDesc = await r.table("settings").get(member.guild.id)("welcomeTextDesc").run(client.con)
-    const wFooter = await r.table("settings").get(member.guild.id)("welcomeTextFooter").run(client.con)
-    const wColor = await r.table("settings").get(member.guild.id)("welcomeColorHex").run(client.con)
-
-    const embed = new Discord.MessageEmbed()
-        .setAuthor(wAuthor)
-        .setFooter(wFooter)
-        .setTitle(wTitle)
-        .setDescription(wDesc)
-        .setFooter(wFooter)
-        .setColor(wColor)
-    member.guild.channels.cache.get(channel).send(embed)
+  let embed = new Discord.MessageEmbed()
+      .setAuthor(member.user.tag, member.user.displayAvatarURL({dynamic: true}))
+      .setTitle('Użytkownik dołączył na serwer!')
+  .setDescription(tekst)
+  .setColor('#34eb43')
+  member.guild.channels.cache.get(client.dbs.prepare(`SELECT welcomeChannel FROM ServerSettings WHERE ID = ?`).get(member.guild.id).welcomeChannel).send(embed)
+}
 }
