@@ -76,6 +76,10 @@ require("./functions.js")(client);
     const thisLevel = client.config.permLevels[i];
     client.levelCache[thisLevel.name] = thisLevel.level;
   }
+console.log("<!> <!> <!> <!> <!> <!> <!> <!> <!> <!>")
+console.log("KORZYSTASZ Z PRZETERMINOWANEJ WERSJI KODU! NIE ZALECAMY TESTOWAĆ GO NA STABILNYCH BOTACH.")
+console.log("<!> <!> <!> <!> <!> <!> <!> <!> <!> <!>")
+
 client.login("NzA3NjUwMTk4MzA1NzY3NDM0.XrL4mg.0pNcM-dLE9mPXQyDZJljUpDj9KA");
 })();
 
