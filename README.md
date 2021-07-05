@@ -1,4 +1,4 @@
-# PRACE ZATRZYMANE. 
+# PRACE ZAKOŃCZONE.
 
 Aktualnie wspierany branch: v4.0 
 
